@@ -49,7 +49,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CatOrDog'
+              $ref: '#/components/schemas/Pet'
         required: true
       responses:
         '201':
@@ -135,11 +135,13 @@ components:
         - $ref: "#/components/schemas/Pet"
         - type: object
           properties: 
-            miceCaught: integer
+            miceCaught: 
+              type: integer
+              format: int32
     CatOrDog:
       anyOf:
-        - "#/components/schemas/Cat"
-        - "#/components/schemas/Dog"
+        - $ref: "#/components/schemas/Cat"
+        - $ref: "#/components/schemas/Dog"
       discriminator:
         propertyName: petType
 
